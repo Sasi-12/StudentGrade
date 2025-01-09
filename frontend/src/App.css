@@ -11,7 +11,7 @@ body {
 /* Container Styles */
 .container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 10 auto;
   padding: 20px;
 }
 
@@ -50,7 +50,7 @@ form {
 form input[type="text"],
 form input[type="password"],
 form input[type="number"] {
-  width: 100%;
+  width: 80%;
   padding: 10px;
   margin: 10px 0;
   border: 1px solid #ddd;
