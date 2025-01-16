@@ -37,7 +37,7 @@ const StudentLogin = () => {
 
   const inputStyle = {
     width: '100%',
-    padding: '10px',
+    padding: '100px',
     margin: '10px 0',
     borderRadius: '4px',
     border: '1px solid #ddd',
