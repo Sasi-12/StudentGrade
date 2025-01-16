@@ -19,7 +19,7 @@ const StudentGrades = () => {
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent form submission
     try {
-      const response = await axios.post('http://localhost:5000/api/convert', {
+      const response = await axios.post('http://localhost:6000/api/convert', {
         scores: Object.values(grades).map(Number),
       });
       console.log("Submitted Grades Results:", response.data.results);
@@ -31,7 +31,7 @@ const StudentGrades = () => {
   const handleFetchResults = async (e) => {
     e.preventDefault(); // Prevent form submission
     try {
-      const response = await axios.get('http://localhost:5000/api/results');
+      const response = await axios.get('http://localhost:6000/api/results');
       setResults(response.data.results);
     } catch (error) {
       console.error('Error fetching results', error);
