@@ -17,25 +17,35 @@ const StudentGrades = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent form submission
+    e.preventDefault();
     try {
       const response = await axios.post('http://localhost:6000/api/convert', {
         scores: Object.values(grades).map(Number),
       });
-      console.log("Submitted Grades Results:", response.data.results);
+      console.log('Submitted Grades Results:', response.data.results);
     } catch (error) {
       console.error('Error submitting grades', error);
     }
   };
 
   const handleFetchResults = async (e) => {
-    e.preventDefault(); // Prevent form submission
+    e.preventDefault();
     try {
       const response = await axios.get('http://localhost:6000/api/results');
       setResults(response.data.results);
     } catch (error) {
       console.error('Error fetching results', error);
     }
+  };
+
+  const handleClear = () => {
+    setGrades({
+      subject1: '',
+      subject2: '',
+      subject3: '',
+      subject4: '',
+      subject5: '',
+    });
   };
 
   return (
@@ -56,7 +66,12 @@ const StudentGrades = () => {
           </div>
         ))}
         <button type="button" onClick={handleSubmit}>Submit Grades</button>
-        <button type="button" onClick={handleFetchResults} style={{marginLeft:"50px"}}>Fetch All Results</button>
+        <button type="button" onClick={handleFetchResults} style={{ marginLeft: '20px' }}>
+          Fetch All Results
+        </button>
+        <button type="button" onClick={handleClear} style={{ marginLeft: '20px' }}>
+          Clear Grades
+        </button>
       </form>
       <div>
         {results.length > 0 ? (

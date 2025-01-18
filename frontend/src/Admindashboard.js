@@ -3,13 +3,17 @@ import axios from 'axios';
 
 const AdminDashboard = () => {
   const [results, setResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false); 
 
   const handleFetchResults = async () => {
+    setIsLoading(true); 
     try {
       const response = await axios.get('http://localhost:6000/api/results');
       setResults(response.data.results);
     } catch (error) {
       console.error('Error fetching results', error);
+    } finally {
+      setIsLoading(false); 
     }
   };
 
@@ -17,13 +21,17 @@ const AdminDashboard = () => {
     <div>
       <h1>Admin Dashboard</h1>
       <button onClick={handleFetchResults}>Fetch All Results</button>
-      <div>
-        {results.map((result, index) => (
-          <div key={index}>
-            <p>Score: {result.score}, Grade: {result.grade}</p>
-          </div>
-        ))}
-      </div>
+      {isLoading ? ( 
+        <p>Loading results...</p>
+      ) : (
+        <div>
+          {results.map((result, index) => (
+            <div key={index}>
+              <p>Score: {result.score}, Grade: {result.grade}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
