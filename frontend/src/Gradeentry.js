@@ -9,6 +9,7 @@ const StudentGrades = () => {
     subject3: '',
     subject4: '',
     subject5: '',
+    subject6: '', // Added sixth subject
   });
   const [results, setResults] = useState([]);
 
@@ -45,6 +46,7 @@ const StudentGrades = () => {
       subject3: '',
       subject4: '',
       subject5: '',
+      subject6: '', // Clear sixth subject as well
     });
   };
 
@@ -54,7 +56,7 @@ const StudentGrades = () => {
         <h1>Enter Your Grades</h1>
       </header>
       <form>
-        {['subject1', 'subject2', 'subject3', 'subject4', 'subject5'].map((subject, index) => (
+        {['subject1', 'subject2', 'subject3', 'subject4', 'subject5', 'subject6'].map((subject, index) => (
           <div key={index}>
             <label>Subject {index + 1}:</label>
             <input
