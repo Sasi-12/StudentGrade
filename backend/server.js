@@ -72,7 +72,7 @@ app.get('/api/results', async (req, res) => {
     const latestResults = await Grade.find().sort({ date: -1 }).limit(5);
     res.json({ results: latestResults });
   } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch results' });
+    res.status(500).json({ error: 'Failed to fetch scores' });
   }
 });
 
